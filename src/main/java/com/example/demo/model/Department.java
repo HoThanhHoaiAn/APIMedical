@@ -1,20 +1,25 @@
 package com.example.demo.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
-public class Department {
+public class Department implements Serializable {
     @Id
     private String id;
     private String name;
     private String decription;
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private List<Doctor> doctors;
 
     public Department() {
@@ -64,6 +69,29 @@ public class Department {
 
     public void setDecription(String decription) {
         this.decription = decription;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", decription='" + decription + '\'' +
+                ", doctors=" + doctors +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(decription, that.decription) && Objects.equals(doctors, that.doctors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, decription, doctors);
     }
 }
 

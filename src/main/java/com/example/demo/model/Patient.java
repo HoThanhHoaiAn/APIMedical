@@ -6,7 +6,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 import java.sql.Date;
-@Entity
+//@Entity
 public class Patient {
     @Id
     private String id;
