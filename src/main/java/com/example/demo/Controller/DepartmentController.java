@@ -27,7 +27,7 @@ public class DepartmentController {
     public ResponseEntity<ResponseObject> getDepartmentById(@PathVariable String id){
         Optional<Department> d = repository.findById(id);
         return d.isPresent()? ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObject("ok", "Query product successfully", d)
+                new ResponseObject("ok", "Query department successfully", d)
         ) : ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                 new ResponseObject("false", "Can't not find doctor with id = " + id, "")
         );

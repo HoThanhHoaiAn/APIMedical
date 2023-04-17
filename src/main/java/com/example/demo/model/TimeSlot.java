@@ -2,10 +2,12 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
@@ -22,6 +24,9 @@ public class TimeSlot implements Serializable {
     @JoinColumn(name = "schedule_id")
     @JsonBackReference
     private Schedule schedule;
+    @OneToMany(mappedBy = "timeSlot", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     public TimeSlot(int id, LocalTime start, LocalTime end, String work_shift, int available_slot, Schedule schedule) {
         this.id = id;

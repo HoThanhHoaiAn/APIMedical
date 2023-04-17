@@ -28,7 +28,7 @@ public class DoctorController {
     public ResponseEntity<ResponseObject> getDoctorById(@PathVariable String id){
         Optional<Doctor> d = repository.findById(id);
         return d.isPresent()? ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObject("ok", "Query product successfully", d)
+                new ResponseObject("ok", "Query doctor successfully", d)
         ) : ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                 new ResponseObject("false", "Can't not find doctor with id = " + id, "")
         );

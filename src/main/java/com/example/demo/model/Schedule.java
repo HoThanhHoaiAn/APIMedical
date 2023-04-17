@@ -26,6 +26,9 @@ public class Schedule implements Serializable {
     @OneToMany(mappedBy = "schedule",cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<TimeSlot> timeSlots;
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Appointment> appointments;
     public Schedule() {
     }
 
