@@ -1,12 +1,12 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 import java.sql.Date;
-//@Entity
+import java.util.List;
+
+@Entity
 public class Patient {
     @Id
     private String id;
@@ -16,6 +16,10 @@ public class Patient {
     private Date birth;
     private int gender;
     private String address;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Appointment> appointments;
     public Patient() {
     }
 

@@ -26,6 +26,9 @@ public class Doctor implements Serializable {
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Schedule> schedules;
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     public Doctor() {
     }

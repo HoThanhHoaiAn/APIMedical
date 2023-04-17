@@ -1,9 +1,9 @@
 package com.example.demo.repositories;
 
-import com.example.demo.model.Department;
+import com.example.demo.model.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department, String> {
+public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 }
