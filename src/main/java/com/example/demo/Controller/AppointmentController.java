@@ -28,6 +28,5 @@ public class AppointmentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                     new ResponseObject("false", "Can't not add appointment", ""));
         }
-
     }
 }
