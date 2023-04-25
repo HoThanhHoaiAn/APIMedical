@@ -1,7 +1,0 @@
-[build]
-command = "mvn clean install"
-runtime = "unspecified"
-
-[env]
-PORT = 8080
-JAVA_OPTS = "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75"
