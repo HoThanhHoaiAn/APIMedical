@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, String> {
-    public List<Doctor> getDoctorsByDepartmentId(@Param("department_id") String department_id);
+    public List<Doctor> findAllByDepartmentId(@Param("department_id") String department_id);
 }
