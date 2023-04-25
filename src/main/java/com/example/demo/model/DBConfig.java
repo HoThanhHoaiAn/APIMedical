@@ -12,7 +12,7 @@ public class DBConfig{
        @Bean
        public DataSource dataSource(){
           DriverManagerDataSource dataSource = new DriverManagerDataSource();
-          dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+          dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
           dataSource.setUrl("your url");
           dataSource.setUsername( "username" );
           dataSource.setPassword( "password" );
