@@ -22,8 +22,8 @@ public class TimeSlot implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalTime start;
-    private LocalTime end;
+    private LocalTime start_work;
+    private LocalTime end_work;
     private String work_shift;
     private int available_slot;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,19 +34,19 @@ public class TimeSlot implements Serializable {
     @JsonManagedReference
     private List<Appointment> appointments;
 
-    public TimeSlot(int id, LocalTime start, LocalTime end, String work_shift, int available_slot, Schedule schedule) {
+    public TimeSlot(int id, LocalTime start_work, LocalTime end_work, String work_shift, int available_slot, Schedule schedule) {
         this.id = id;
-        this.start = start;
-        this.end = end;
+        this.start_work = start_work;
+        this.end_work = end_work;
         this.work_shift = work_shift;
         this.available_slot = available_slot;
         this.schedule = schedule;
     }
 
-    public TimeSlot(int id, LocalTime start, LocalTime end, int available_slot, Schedule schedule) {
+    public TimeSlot(int id, LocalTime start_work, LocalTime end_work, int available_slot, Schedule schedule) {
         this.id = id;
-        this.start = start;
-        this.end = end;
+        this.start_work = start_work;
+        this.end_work = end_work;
         this.available_slot = available_slot;
         this.schedule = schedule;
     }
@@ -65,20 +65,20 @@ public class TimeSlot implements Serializable {
         this.id = id;
     }
 
-    public LocalTime getStart() {
-        return start;
+    public LocalTime getStart_work() {
+        return start_work;
     }
 
-    public void setStart(LocalTime start) {
-        this.start = start;
+    public void setStart_work(LocalTime start_work) {
+        this.start_work = start_work;
     }
 
-    public LocalTime getEnd() {
-        return end;
+    public LocalTime getEnd_work() {
+        return end_work;
     }
 
-    public void setEnd(LocalTime end) {
-        this.end = end;
+    public void setEnd_work(LocalTime end_work) {
+        this.end_work = end_work;
     }
 
     public String getWork_shift() {
@@ -109,8 +109,8 @@ public class TimeSlot implements Serializable {
     public String toString() {
         return "TimeSlot{" +
                 "id=" + id +
-                ", start=" + start +
-                ", end=" + end +
+                ", start_work=" + start_work +
+                ", end_work=" + end_work +
                 ", work_shift='" + work_shift + '\'' +
                 ", available_slot=" + available_slot +
                 ", schedule=" + schedule +
@@ -122,11 +122,11 @@ public class TimeSlot implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TimeSlot timeSlot = (TimeSlot) o;
-        return id == timeSlot.id && available_slot == timeSlot.available_slot && Objects.equals(start, timeSlot.start) && Objects.equals(end, timeSlot.end) && Objects.equals(work_shift, timeSlot.work_shift) && Objects.equals(schedule, timeSlot.schedule);
+        return id == timeSlot.id && available_slot == timeSlot.available_slot && Objects.equals(start_work, timeSlot.start_work) && Objects.equals(end_work, timeSlot.end_work) && Objects.equals(work_shift, timeSlot.work_shift) && Objects.equals(schedule, timeSlot.schedule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, start, end, work_shift, available_slot, schedule);
+        return Objects.hash(id, start_work, end_work, work_shift, available_slot, schedule);
     }
 }
