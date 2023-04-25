@@ -18,6 +18,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@NamedQuery(name = "Doctor.findDoctorsByDepartmentId",
+        query = "SELECT d FROM Doctor d WHERE d.department.id = :department_id")
 public class Doctor implements Serializable {
     @Id
     private String id;
