@@ -2,9 +2,12 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +16,10 @@ import java.util.Objects;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Department implements Serializable {
     @Id
     private String id;
@@ -22,21 +29,11 @@ public class Department implements Serializable {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private List<Doctor> doctors;
 
-    public Department() {
-    }
-
     public Department(String id, String name, String decription) {
         this.id = id;
         this.name = name;
         this.decription = decription;
         this.doctors = new ArrayList<>();
-    }
-
-    public Department(String id, String name, String decription, List<Doctor> doctors) {
-        this.id = id;
-        this.name = name;
-        this.decription = decription;
-        this.doctors = doctors;
     }
 
     public String getId() {

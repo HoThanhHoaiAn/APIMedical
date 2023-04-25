@@ -1,17 +1,23 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class TimeSlot implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,10 +55,6 @@ public class TimeSlot implements Serializable {
         this.id = id;
         this.work_shift = work_shift;
         this.available_slot = available_slot;
-    }
-
-    public TimeSlot() {
-
     }
 
     public int getId() {

@@ -2,10 +2,18 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,19 +36,6 @@ public class Appointment implements Serializable {
     @JoinColumn(name = "timeSlotId")
     @JsonBackReference
     private TimeSlot timeSlot;
-
-    public Appointment() {
-    }
-
-    public Appointment(int id, int status, String description, Patient patient, Doctor doctor, Schedule schedule, TimeSlot timeSlot) {
-        this.id = id;
-        this.status = status;
-        this.description = description;
-        this.patient = patient;
-        this.doctor = doctor;
-        this.schedule = schedule;
-        this.timeSlot = timeSlot;
-    }
 
     public int getStatus() {
         return status;

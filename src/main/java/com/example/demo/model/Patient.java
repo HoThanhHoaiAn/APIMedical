@@ -2,11 +2,19 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Patient {
     @Id
     private String id;
@@ -20,8 +28,6 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Appointment> appointments;
-    public Patient() {
-    }
 
     public Patient(String id, String phone, String name, Date birth, int gender, String address) {
         this.id = id;

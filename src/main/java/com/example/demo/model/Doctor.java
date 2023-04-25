@@ -2,6 +2,10 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,6 +14,10 @@ import java.util.Objects;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Doctor implements Serializable {
     @Id
     private String id;
@@ -29,9 +37,6 @@ public class Doctor implements Serializable {
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Appointment> appointments;
-
-    public Doctor() {
-    }
 
     public Doctor(String id, String name, String url_photo, int fee, float rating, String education, String description) {
         this.id = id;
