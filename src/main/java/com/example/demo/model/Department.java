@@ -25,14 +25,16 @@ public class Department implements Serializable {
     private String id;
     private String name;
     private String decription;
+    private String url;
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private List<Doctor> doctors;
 
-    public Department(String id, String name, String decription) {
+    public Department(String id, String name, String decription, String url) {
         this.id = id;
         this.name = name;
         this.decription = decription;
+        this.url = url;
         this.doctors = new ArrayList<>();
     }
 

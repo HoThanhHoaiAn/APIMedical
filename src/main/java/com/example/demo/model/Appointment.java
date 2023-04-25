@@ -21,19 +21,19 @@ public class Appointment implements Serializable {
     private int status;
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patientId")
+    @JoinColumn(name = "patient_id")
     @JsonBackReference
     private Patient patient;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doctorId")
+    @JoinColumn(name = "doctor_id")
     @JsonBackReference
     private Doctor doctor;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "scheduleId")
+    @JoinColumn(name = "schedule_id")
     @JsonBackReference
     private Schedule schedule;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "timeSlotId")
+    @JoinColumn(name = "timeSlot_id")
     @JsonBackReference
     private TimeSlot timeSlot;
 
