@@ -10,5 +10,6 @@ import java.util.List;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, String> {
-    List<Doctor> findAllByDepartmentId(String departmentId);
+    @Query(name = "findAllByDepartmentId")
+    List<Doctor> findAllByDepartmentId(@Param("departmentId") String departmentId);
 }
