@@ -22,7 +22,7 @@ public class DoctorController {
     private DoctorRepository repository;
     @GetMapping("Doctors/{department_id}")
     public List<Doctor> getAllDoctorByDepartmentId(@PathVariable String department_id){
-        return repository.findDoctorsByDepartmentId(department_id);
+        return repository.findAllDoctorsByDepartmentId(department_id);
     }
     @GetMapping("/Doctor/{id}")
     public ResponseEntity<ResponseObject> getDoctorById(@PathVariable String id){
