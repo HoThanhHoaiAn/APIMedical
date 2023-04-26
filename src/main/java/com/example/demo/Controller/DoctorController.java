@@ -20,9 +20,9 @@ import java.util.Optional;
 public class DoctorController {
     @Autowired
     private DoctorRepository repository;
-    @GetMapping("Doctors/{department_id}")
-    public List<Doctor> getAllDoctorByDepartmentId(@PathVariable String department_id){
-        return repository.findAllDoctorsByDepartmentId(department_id);
+    @GetMapping("Doctors/{departmentId}")
+    public List<Doctor> getAllDoctorByDepartmentId(@PathVariable String departmentId){
+        return repository.findAllByDepartmentId(departmentId);
     }
     @GetMapping("/Doctor/{id}")
     public ResponseEntity<ResponseObject> getDoctorById(@PathVariable String id){
