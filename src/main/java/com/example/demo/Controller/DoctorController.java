@@ -20,17 +20,13 @@ import java.util.Optional;
 public class DoctorController {
     @Autowired
     private DoctorRepository repository;
+
     @GetMapping("Doctors/{departmentId}")
-    public List<Doctor> getAllDoctorByDepartmentId(@PathVariable String departmentId){
+    public List<Doctor> getAllDoctorByDepartmentId(@PathVariable String departmentId) {
+        /*
+            use case 2 Đăng ký lịch khám mới
+            6.2 findAllByDepartmentId(departmentId)
+        */
         return repository.findAllByDepartmentId(departmentId);
-    }
-    @GetMapping("/Doctor/{id}")
-    public ResponseEntity<ResponseObject> getDoctorById(@PathVariable String id){
-        Optional<Doctor> d = repository.findById(id);
-        return d.isPresent()? ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObject("ok", "Query doctor successfully", d)
-        ) : ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                new ResponseObject("false", "Can't not find doctor with id = " + id, "")
-        );
     }
 }

@@ -21,15 +21,10 @@ public class DepartmentController {
     private DepartmentRepository repository;
     @GetMapping("/Departments")
     public List<Department> getAll(){
+        /*
+            use case 2 Đăng ký lịch khám mới
+           4.2 findAll()
+        */
         return repository.findAll();
-    }
-    @GetMapping("/Department/{id}")
-    public ResponseEntity<ResponseObject> getDepartmentById(@PathVariable String id){
-        Optional<Department> d = repository.findById(id);
-        return d.isPresent()? ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObject("ok", "Query department successfully", d)
-        ) : ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                new ResponseObject("false", "Can't not find doctor with id = " + id, "")
-        );
     }
 }

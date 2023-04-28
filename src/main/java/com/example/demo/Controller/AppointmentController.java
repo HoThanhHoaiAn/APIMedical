@@ -17,16 +17,20 @@ import java.util.List;
 public class AppointmentController {
     @Autowired
     private AppointmentRepository repository;
-    @PostMapping("/")
-    public ResponseEntity<ResponseObject> addDB(Appointment appointment){
+
+    @PostMapping("/saveAppointment")
+    public ResponseEntity<Appointment> addDB(Appointment appointment) {
         try {
+            /*
+            use case 2 Đăng ký lịch khám mới
+            16.1 save(appointment)
+            */
             Appointment newAppointment = repository.save(appointment);
             return ResponseEntity.status(HttpStatus.OK).body(
-                    new ResponseObject("ok", "Add appointment successfully", newAppointment));
-        }
-        catch (Exception e){
+                    newAppointment);
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                    new ResponseObject("false", "Can't not add appointment", ""));
+                    null);
         }
     }
 }

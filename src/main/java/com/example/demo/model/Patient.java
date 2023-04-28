@@ -23,19 +23,49 @@ public class Patient {
     @Temporal(TemporalType.DATE)
     private Date birth;
     private int gender;
+    private String city;
+    private String district;
+    private String ward;
     private String address;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Appointment> appointments;
 
-    public Patient(String id, String phone, String name, Date birth, int gender, String address) {
+    public Patient(String id, String phone, String name, Date birth, int gender, String city, String district, String ward, String address) {
         this.id = id;
         this.phone = phone;
         this.name = name;
         this.birth = birth;
         this.gender = gender;
+        this.city = city;
+        this.district = district;
+        this.ward = ward;
         this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
     }
 
     public String getId() {
