@@ -25,6 +25,24 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+<<<<<<< HEAD
+=======
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>6.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>6.0.9</version>
+        </dependency>
+        <dependency>
+>>>>>>> parent of 614b44c9 (update api)
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>3.0.4</version>
@@ -42,7 +60,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
-            <version>3.0.4</version>
+            <version>3.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -52,7 +70,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <version>8.0.26</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
