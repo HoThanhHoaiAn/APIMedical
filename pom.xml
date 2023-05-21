@@ -25,8 +25,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-<<<<<<< HEAD
-=======
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>6.0.9</version>
@@ -42,7 +40,6 @@
             <version>6.0.9</version>
         </dependency>
         <dependency>
->>>>>>> parent of 614b44c9 (update api)
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>3.0.4</version>
