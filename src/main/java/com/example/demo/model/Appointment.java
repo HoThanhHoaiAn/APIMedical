@@ -22,7 +22,7 @@ public class Appointment implements Serializable {
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
-    @JsonBackReference
+    @JsonBackReference(value = "patient-appointment")
     private Patient patient;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")

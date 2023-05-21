@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "api/v1/patients")
 public class PatientController {
 
     @Autowired
     private PatientRepository repository;
 
-    @GetMapping("/Patient/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ResponseObject> getPatientById(@PathVariable String id) {
         Optional<Patient> d = repository.findById(id);
         return d.isPresent() ? ResponseEntity.status(HttpStatus.OK).body(
@@ -27,15 +27,13 @@ public class PatientController {
         );
     }
 
-    @PostMapping("/savePatient")
-    public ResponseEntity<Patient> addPatientDB(Patient patient) {
+    @PostMapping
+    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
         try {
             Patient newPatient = repository.save(patient);
-            return ResponseEntity.status(HttpStatus.OK).body(
-                    newPatient);
+            return ResponseEntity.ok(newPatient);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                    null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
